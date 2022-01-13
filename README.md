@@ -10,10 +10,17 @@ The application under sdn 6.2 shows the problem we face after the migration to 6
 
 In order to run through the respective migration issues, each example must first be commented out in both applications.
 
-Then the application under sdn5.2 must be started first in order to create the graph with the sample entities. Then run the application unter 6.2 to show the problem we are running into with the new version.
+Then run the application under sdn5.2 to create the graph with the sample entities.
 
-In the following table the individual problems are described in more detail
+The cypher script `MATCH (n) RETURN n` shows the created sample graph.
 
-| Problem           | Name          | Description                                                                                                                                                                       |
-| ----------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Infinite fetching | relationships | Remove comments for relationshipsService.process();<br>With version 5.2 the fetching of the related entities stops at depth 1.<br>With version 6.2 every relationship is fetched. |
+Then run the application under 6.2 to show the issues we are running into with the new version.
+
+Caution: Application sdn5.2 purges the database at startup.
+
+The following table contains details about the the problems.
+
+| Problem                 | Name          | Description                                                                                                                                                                       |
+| ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| Infinite fetching       | relationships | Remove comments for relationshipsService.process();<br>With version 5.2 the fetching of the related entities stops at depth 1.<br>With version 6.2 every relationship is fetched. |
+| localDateTime precision | localdatetime | Remove coments for localDateTimeService.process();<br>With version 5.2 a different precision is persisted and loading with 6.2 throws an mapping exception                        |

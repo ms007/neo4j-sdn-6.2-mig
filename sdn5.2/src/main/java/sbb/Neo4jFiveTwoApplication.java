@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import sbb.localdatetime.LocalDateTimeService;
 import sbb.relationships.RelationshipsService;
 import sbb.scripts.ScriptsService;
 
@@ -16,11 +17,15 @@ public class Neo4jFiveTwoApplication implements CommandLineRunner {
 
     private final ScriptsService scriptsService;
     private final RelationshipsService relationshipService;
+    private final LocalDateTimeService localDateTimeService;
 
     @Autowired
-    public Neo4jFiveTwoApplication(ScriptsService scriptsService, RelationshipsService relationshipService) {
+    public Neo4jFiveTwoApplication(ScriptsService scriptsService,
+                                   RelationshipsService relationshipService,
+                                   LocalDateTimeService localDateTimeService) {
         this.scriptsService = scriptsService;
         this.relationshipService = relationshipService;
+        this.localDateTimeService = localDateTimeService;
     }
 
     public static void main(String[] args) {
@@ -34,7 +39,12 @@ public class Neo4jFiveTwoApplication implements CommandLineRunner {
         logger.info("purge database...");
         scriptsService.purgeDatabase();
 
+        /*
         logger.info("relationship issue...");
         relationshipService.process();
+        */
+
+        logger.info("localDateTime issue...");
+        localDateTimeService.process();
     }
 }
