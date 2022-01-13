@@ -1,0 +1,23 @@
+spring:
+  neo4j:
+    authentication:
+      password: admin
+      username: neo4j
+    uri: 'bolt://localhost:7687'
+
+logging:
+  level:
+    root: Error
+    sbb: INFO
+  file:
+    name: logs/migration.log
+  pattern:
+    console: "%clr(%d{dd.MM.yyyy HH:mm:ss}){faint} - %msg%n"
+    file: "%d{dd.MM.yyyy HH:mm:ss.SSS} %-5level [%thread] %logger : %msg%n"
+
+
+
+
+
+
+
