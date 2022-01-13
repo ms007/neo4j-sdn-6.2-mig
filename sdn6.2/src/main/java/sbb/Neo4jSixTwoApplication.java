@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import sbb.localdatetime.LocalDateTimeService;
+import sbb.projection.ProjectionService;
 import sbb.relationships.RelationshipsService;
 
 @SpringBootApplication
@@ -15,11 +16,15 @@ public class Neo4jSixTwoApplication implements CommandLineRunner {
 
     private final RelationshipsService relationshipsService;
     private final LocalDateTimeService localDateTimeService;
+    private final ProjectionService projectionService;
 
     @Autowired
-    public Neo4jSixTwoApplication(RelationshipsService relationshipsService, LocalDateTimeService localDateTimeService) {
+    public Neo4jSixTwoApplication(RelationshipsService relationshipsService,
+                                  LocalDateTimeService localDateTimeService,
+                                  ProjectionService projectionService) {
         this.relationshipsService = relationshipsService;
         this.localDateTimeService = localDateTimeService;
+        this.projectionService = projectionService;
     }
 
     public static void main(String[] args) {
@@ -35,8 +40,13 @@ public class Neo4jSixTwoApplication implements CommandLineRunner {
         relationshipsService.process();
         */
 
+        /*
         logger.info("localDateTime issue...");
         localDateTimeService.process();
+        */
+
+        logger.info("projection issue...");
+        projectionService.process();
     }
 }
 

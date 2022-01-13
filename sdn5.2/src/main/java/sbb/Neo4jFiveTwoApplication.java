@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import sbb.localdatetime.LocalDateTimeService;
+import sbb.projection.ProjectionService;
 import sbb.relationships.RelationshipsService;
 import sbb.scripts.ScriptsService;
 
@@ -18,14 +19,17 @@ public class Neo4jFiveTwoApplication implements CommandLineRunner {
     private final ScriptsService scriptsService;
     private final RelationshipsService relationshipService;
     private final LocalDateTimeService localDateTimeService;
+    private final ProjectionService projectionService;
 
     @Autowired
     public Neo4jFiveTwoApplication(ScriptsService scriptsService,
                                    RelationshipsService relationshipService,
-                                   LocalDateTimeService localDateTimeService) {
+                                   LocalDateTimeService localDateTimeService,
+                                   ProjectionService projectionService) {
         this.scriptsService = scriptsService;
         this.relationshipService = relationshipService;
         this.localDateTimeService = localDateTimeService;
+        this.projectionService = projectionService;
     }
 
     public static void main(String[] args) {
@@ -44,7 +48,12 @@ public class Neo4jFiveTwoApplication implements CommandLineRunner {
         relationshipService.process();
         */
 
+        /*
         logger.info("localDateTime issue...");
         localDateTimeService.process();
+        */
+
+        logger.info("projection issue...");
+        projectionService.process();
     }
 }
